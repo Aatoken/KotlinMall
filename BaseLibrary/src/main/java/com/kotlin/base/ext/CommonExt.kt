@@ -9,7 +9,7 @@ import rx.schedulers.Schedulers
 /**
  *Author Aatoken
  *Date 2019/4/26 9:47
- *Description
+ *Description 扩展方法
  */
 
 fun <T> Observable<T>.execute(subscriber: BaseSubscriber<T>) {

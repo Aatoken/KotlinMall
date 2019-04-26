@@ -6,7 +6,7 @@ import rx.Observable
 /**
  *Author Aatoken
  *Date 2019/4/26 8:50
- *Description
+ *Description 用户服务
  */
 interface UserService {
 

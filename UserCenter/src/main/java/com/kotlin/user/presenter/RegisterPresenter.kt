@@ -11,7 +11,7 @@ import com.kotlin.user.service.impl.UserServiceImpl
 /**
  *Author Aatoken
  *Date 2019/4/25 23:42
- *Description
+ *Description 注册业务逻辑代码
  */
 class RegisterPresenter : BasePresenter<RegisterView>() {
 

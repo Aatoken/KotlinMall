@@ -5,7 +5,7 @@ import com.kotlin.base.presenter.view.BaseView
 /**
  *Author Aatoken
  *Date 2019/4/25 23:42
- *Description
+ *Description 注册的view
  */
 interface RegisterView : BaseView {
 
