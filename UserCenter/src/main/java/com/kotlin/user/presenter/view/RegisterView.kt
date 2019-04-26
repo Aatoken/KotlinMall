@@ -9,6 +9,9 @@ import com.kotlin.base.presenter.view.BaseView
  */
 interface RegisterView : BaseView {
 
-
+    /**
+     * 返回注册结果
+     */
+    fun onRegisterResult(result: Boolean)
 
 }
