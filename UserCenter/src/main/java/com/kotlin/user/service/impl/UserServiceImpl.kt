@@ -14,15 +14,17 @@ import rx.functions.Func1
  *Description 用户服务的具体实现
  */
 class UserServiceImpl : UserService {
+
+
     override fun register(mobile: String, pwd: String, verifyCode: String)
             : Observable<Boolean> {
         val repository = UserRepository()
-        return  repository.register(mobile,pwd,verifyCode)
-                .flatMap (object :Func1<BaseResp<String>,Observable<Boolean>>{
+        return repository.register(mobile, pwd, verifyCode)
+                .flatMap(object : Func1<BaseResp<String>, Observable<Boolean>> {
                     override fun call(t: BaseResp<String>): Observable<Boolean> {
-                        if (t.status!=0)
-                        {
-                            return Observable.error(BaseException(t.status,t.message))
+
+                        if (t.status != 0) {
+                            return Observable.error(BaseException(t.status, t.message))
                         }
                         return Observable.just(true)
                     }
@@ -30,4 +32,14 @@ class UserServiceImpl : UserService {
                 })
     }
 
+
+    override fun userinfo(): Observable<String> {
+        val repository = UserRepository()
+        return repository.userinfo().flatMap(object : Func1<String, Observable<String>> {
+            override fun call(t: String?): Observable<String> {
+                return Observable.just(t)
+            }
+        })
+
+    }
 }

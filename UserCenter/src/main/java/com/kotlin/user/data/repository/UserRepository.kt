@@ -4,6 +4,7 @@ import com.kotlin.base.data.net.RetrofitFactory
 import com.kotlin.base.data.protocol.BaseResp
 import com.kotlin.user.data.api.UserApi
 import com.kotlin.user.data.protocol.RegisterReq
+import com.kotlin.user.data.protocol.UserInfoReq
 import rx.Observable
 
 /**
@@ -19,6 +20,11 @@ class UserRepository {
 
         return RetrofitFactory.instances.create(UserApi::class.java)
                 .regitser(RegisterReq(mobile, pwd, verifyCode))
+    }
+
+    fun userinfo(): Observable<String> {
+        return RetrofitFactory.instances.create(UserApi::class.java)
+                .userInfo()
     }
 
 

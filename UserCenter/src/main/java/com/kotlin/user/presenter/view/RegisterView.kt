@@ -14,4 +14,6 @@ interface RegisterView : BaseView {
      */
     fun onRegisterResult(result: Boolean)
 
+    fun userinfoResult(string:String)
+
 }

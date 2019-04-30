@@ -29,8 +29,18 @@ class RegisterPresenter : BasePresenter<RegisterView>() {
                     }
                 })
 
-
     }
 
+
+    fun userinfo()
+    {
+        var userServiceImpl=UserServiceImpl()
+        userServiceImpl.userinfo()
+                .execute(object :BaseSubscriber<String>(){
+                    override fun onNext(t: String) {
+                      mView.userinfoResult(t)
+                    }
+                })
+    }
 
 }

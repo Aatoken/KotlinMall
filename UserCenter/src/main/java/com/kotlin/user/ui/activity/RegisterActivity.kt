@@ -9,6 +9,11 @@ import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
 
 class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
+    override fun userinfoResult(string: String) {
+         toast(string)
+    }
+
+
     override fun onRegisterResult(result: Boolean) {
         toast("注册")
     }
@@ -20,9 +25,11 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView {
         mPresenter = RegisterPresenter()
         mPresenter.mView = this
         mRegisterBtn.setOnClickListener {
-            mPresenter.register("", "", "11")
+            // mPresenter.register("", "", "11")
+            mPresenter.userinfo()
         }
 
-
     }
+
+
 }

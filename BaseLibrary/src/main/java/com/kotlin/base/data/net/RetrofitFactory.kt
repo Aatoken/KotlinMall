@@ -1,11 +1,13 @@
 package com.kotlin.base.data.net
 
+import com.kotlin.base.common.BaseConstant
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
 /**
@@ -26,16 +28,10 @@ class RetrofitFactory private constructor() {
      * 初始化创建 retrofit
      */
     init {
-        retrofit = Retrofit.Builder()
-                .baseUrl("")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .client(initClient())
-                .build()
 
         //通用拦截器
         interceptor = Interceptor { chain ->
-            var request = chain.request()
+            val request = chain.request()
                     .newBuilder()
                     .addHeader("Content_Type", "application/json")
                     .addHeader("charset", "UTF-8")
@@ -43,6 +39,16 @@ class RetrofitFactory private constructor() {
 
             chain.proceed(request)
         }
+
+        retrofit = Retrofit.Builder()
+                .baseUrl(BaseConstant.SERVICE_ADDRESS)
+                .addConverterFactory(ScalarsConverterFactory.create())//字符串解析
+                .addConverterFactory(GsonConverterFactory.create())//json解析
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())//Rxjava
+                .client(initClient())//okhttp
+                .build()
+
+
 
     }
 

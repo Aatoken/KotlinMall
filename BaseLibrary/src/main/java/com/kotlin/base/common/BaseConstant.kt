@@ -9,6 +9,6 @@ package com.kotlin.base.common
 class BaseConstant {
     companion object {
         //服务器地址
-        var SERVICE_ADDRESS=""
+        var SERVICE_ADDRESS="http://192.168.96.2:1314/RestServer/api/"
     }
 }

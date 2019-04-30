@@ -12,8 +12,9 @@ interface UserService {
 
 
     //用户注册
-    fun register(mobile:String,pwd:String,verifyCode:String): Observable<Boolean>
+    fun register(mobile: String, pwd: String, verifyCode: String): Observable<Boolean>
 
+    fun userinfo(): Observable<String>
 
 
 }
