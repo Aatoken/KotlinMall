@@ -1,6 +1,11 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
+kapt {
+    generateStubs = true
+}
 android {
     compileSdkVersion 28
 
@@ -65,10 +70,9 @@ dependencies {
     api "com.squareup.okhttp3:logging-interceptor:${ok_http_version}"
     api "com.squareup.retrofit2:converter-gson:${retrofit_version}"
     api "com.squareup.retrofit2:adapter-rxjava:${retrofit_version}"
-    api 'com.squareup.retrofit2:converter-scalars:2.0.0'
-    //dagger2
-//    kapt 'com.google.dagger:dagger-compiler:2.14.1'
-//    implementation 'com.google.dagger:dagger:2.17'
-
+    api 'com.squareup.retrofit2:converter-scalars:2.4.0'
+    //dagger2依赖添加
+    implementation "com.google.dagger:dagger:$dragger_version"
+    kapt "com.google.dagger:dagger-compiler:$dragger_version"
 }
 
